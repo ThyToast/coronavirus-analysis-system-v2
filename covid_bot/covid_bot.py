@@ -1,7 +1,6 @@
 import pickle
 import re
 import string
-import SessionState
 import joblib
 import numpy as np
 import pandas as pd
@@ -19,7 +18,6 @@ class CovidBot:
     vocab = joblib.load('covid_bot/datasets/vocab.pkl')
     df2 = pd.read_csv('covid_bot/datasets/response.csv')
 
-    ss = SessionState.get(is_startup=True)
 
     def get_pred(model, encoded_input):
         pred = np.argmax(model.predict(encoded_input))
@@ -81,13 +79,7 @@ class CovidBot:
         response = CovidBot.get_response(CovidBot.df2, pred)
         response = CovidBot.bot_response(response)
 
-        if CovidBot.ss.is_startup:
-            response = "Hi, I'm happy to have you here \nI hope you're doing well today :)"
-            CovidBot.ss.is_startup = False
-            return response
-
-        else:
-            return response
+        return response
 
     def get_text():
         input_text = st.text_input("Type any COVID-19 questions here: ")
