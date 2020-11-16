@@ -1,12 +1,12 @@
 import pickle
 import re
 import string
+
 import joblib
 import numpy as np
 import pandas as pd
 import pyttsx3
 import streamlit as st
-
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences

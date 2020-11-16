@@ -1,18 +1,17 @@
-import streamlit as st
+import re
+from time import sleep
+
 import altair as alt
+import covid_daily
 import numpy as np
 import pandas as pd
+import streamlit as st
 import tweepy
-import re
-import covid_daily
-
 from googletrans import Translator
-from textblob import TextBlob
-from time import sleep
-from statsmodels.tsa.ar_model import AR
 from statsmodels.tsa.arima_model import ARIMA
+from textblob import TextBlob
+
 from covid_bot import covid_bot
-from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 
 # cached function for fast response
