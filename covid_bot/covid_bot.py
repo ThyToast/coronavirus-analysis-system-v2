@@ -5,7 +5,7 @@ from covid_bot import SessionState
 import joblib
 import numpy as np
 import pandas as pd
-import pyttsx3
+from gtts import gTTS
 import streamlit as st
 
 from nltk.stem import WordNetLemmatizer
@@ -95,9 +95,5 @@ class CovidBot:
         return df_input
 
     def speak(user_input):
-        engine = pyttsx3.init()
-        voices = engine.getProperty('voices')
-        engine.setProperty('voice', voices[1].id)
-        engine.say(user_input)
-        engine.runAndWait()
-
+        tts = gTTS(user_input)
+        return tts

@@ -406,7 +406,8 @@ if page_select == 'COVID-Bot':
     if bot:
         button = st.checkbox("Click for voiced chatbot")
         if button:
-            covid_bot.CovidBot.speak(response)
+            speech = covid_bot.CovidBot.speak(response)
+            st.audio(speech)
 
 
 # when covid 19 cases is selected (data based on worldometers)
