@@ -1,7 +1,7 @@
 import pickle
 import re
 import string
-import SessionState
+from covid_bot import SessionState
 import joblib
 import numpy as np
 import pandas as pd
