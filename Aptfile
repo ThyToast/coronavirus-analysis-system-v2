@@ -1,3 +1,2 @@
-libespeak1
-libpulse0
-pulseaudio
+http://mirrors.kernel.org/ubuntu/pool/universe/e/espeak/libespeak1_1.48.04+dfsg-5_amd64.deb
+http://ftp.us.debian.org/debian/pool/main/p/pulseaudio/libpulse0_5.0-13_amd64.deb
