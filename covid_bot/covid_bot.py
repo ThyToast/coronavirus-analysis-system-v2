@@ -5,6 +5,7 @@ from covid_bot import SessionState
 import joblib
 import numpy as np
 import pandas as pd
+import pyttsx3
 from gtts import gTTS
 import streamlit as st
 
@@ -95,5 +96,8 @@ class CovidBot:
         return df_input
 
     def speak(user_input):
-        tts = gTTS(user_input)
-        return tts
+        engine = pyttsx3.init()
+        voices = engine.getProperty('voices')
+        engine.setProperty('voice', voices[1].id)
+        engine.say(user_input)
+        engine.runAndWait()
