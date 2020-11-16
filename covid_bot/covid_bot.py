@@ -6,7 +6,6 @@ import joblib
 import numpy as np
 import pandas as pd
 import pyttsx3
-from gtts import gTTS
 import streamlit as st
 
 from nltk.stem import WordNetLemmatizer
