@@ -2,7 +2,7 @@ pyttsx3==2.90
 pandas==1.0.5
 streamlit==0.71.0
 tweepy==3.9.0
-tensorflow-cpu==1.14
+tensorflow-cpu==1.15.0
 numpy==1.18.5
 joblib==0.16.0
 covid_daily==1.1
