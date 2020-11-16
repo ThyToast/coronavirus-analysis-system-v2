@@ -1,0 +1,78 @@
+{"intents": [
+        {"tag": "start_conversation",
+         "patterns": ["Hi there", "Is anyone there?","Hey","Hola", "Hello", "Good day","Hi"],
+         "responses": ["Hello, are you well?", "Happy to have you here", "Good to see you again", "Hi there, how can I help?"],
+         "context": [""]
+        },
+        {"tag": "end_conversation",
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+         "responses": ["Stay safe!", "Have a nice day!", "Be sure to stay six feet apart!","Remember to wash your hands!"],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure","You're welcomed","Have fun on tennis court"],
+         "context": [""]
+        },
+        {"tag": "confused",
+         "patterns": [],
+         "responses": ["Sorry, kindly rephrase the question","Sorry, couldn't understand you", "Please refrain from asking me non-COVID-19 related questions", "Not sure I understand, make sure it is COVID-19 questions"],
+         "context": [""]
+        },
+        {"tag": "options",
+         "patterns": ["How can you help me?", "What can you do?", "What help you provide?", "How can you be helpful?", "What support do you offered","What do you know?","what help?","What are you about?"],
+         "responses": ["I can help you with most COVID-19 Frequently Asked Questions"],
+         "context": [""]
+        },
+  	{"tag": "bot_scope",
+         "patterns": ["What do you know about COVID-19?", "tell me about COVID-19?", "Do you really know lots about COVID-19?", "what exactly do you know about COVID-19"],
+         "responses": ["COVID-19 is the infectious disease caused by the most recently discovered coronavirus. This new virus and disease were unknown before the outbreak began in Wuhan, China, in December 2019."],
+         "context": [""]
+        },
+        {"tag": "symptoms",
+         "patterns": ["What are the symptoms of COVID-19", "List the symptoms of COVID-19", "COVID-19 symptoms?", "symptoms of COVID-19?", "what happens when I get COVID-19", "Do you know the symptoms of COVID-19?"],
+         "responses": ["Some people become infected but don’t develop any symptoms and don't feel unwell. Most people (about 80%) recover from the disease without needing special treatment.", "Around 1 out of every 6 people who gets COVID-19 becomes seriously ill and develops difficulty breathing.", "Older people, and those with underlying medical problems like high blood pressure, heart problems or diabetes, are more likely to develop serious illness. People with fever, cough and difficulty breathing should seek medical attention."],
+         "context": [""]
+        },
+        {"tag": "disease_spread",
+         "patterns": ["How does COVID-19 spread?", "How do you catch COVID-19", "Do you know how COVID-19 spreads?", "How does COVID-19 transmit", "COVID-19 spread" ],
+         "responses": ["People can catch COVID-19 from others who have the virus. The disease can spread from person to person through small droplets from the nose or mouth which are spread when a person with COVID-19 coughs or exhales.", "People can also catch COVID-19 if they breathe in droplets from a person with COVID-19 who coughs out or exhales droplets. This is why it is important to stay more than 1 meter (3 feet) away from a person who is sick.", "Studies to date suggest that the virus that causes COVID-19 is mainly transmitted through contact with respiratory droplets rather than through the air."],
+         "context": [""]
+        },
+        {"tag": "protection",
+         "patterns": ["What can i do to protect myself?","prevent COVID-19 transmission", "How do i protect myself from COVID-19", "I'm afraid of COVID-19, what can i do?", "list preventive measures for COVID-19","preventive measures for COVID-19", "Preventive measures?","Reduce transmission?"],
+         "responses": ["Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.", "Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.", "Avoid touching eyes, nose and mouth.", "Make sure you, and the people around you, follow good respiratory hygiene. This means covering your mouth and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used tissue immediately.", "Stay home if you feel unwell. If you have a fever, cough and difficulty breathing, seek medical attention and call in advance. Follow the directions of your local health authority.", "If possible, avoid traveling to places  – especially if you are an older person or have diabetes, heart or lung disease." , "Self-isolate by staying at home if you begin to feel unwell, even with mild symptoms such as headache, low grade fever (37.3 C or above) and slight runny nose, until you recover."],
+         "context": [""]
+        },
+        {"tag": "cure",
+         "patterns": ["Is there a cure for COVID-19?", "Are there vaccines to treat COVID-19?", "Cure for COVID-19"],
+         "responses": ["Those affected should receive care to relieve symptoms. People with serious illness should be hospitalized. Most patients recover thanks to supportive care.", "There are vaccines currently in trials that may see worldwide distribution early 2021.", "The most effective ways to protect yourself and others against COVID-19 are to frequently clean your hands, cover your cough with the bend of elbow or tissue, and maintain a distance of at least 1 meter (3 feet) from people who are coughing or sneezing."],
+         "context": [""]
+        },
+        {"tag": "mask",
+         "patterns": ["Should I wear a mask to protect myself?", "How does a mask protect others?", "Why are people wearing masks","Purpose of masks?" ],
+         "responses": ["Wearing a mask is essential in preventing water droplets from being in contact with surfaces, which may transmit COVID-19.", "Many governments worldwide are issuing a mandatory mask law, going outdoors without one would be unwise", "Masks reduces the transmission rates by reducing the amount of water droplets dispersed when someone sneezes or coughs."],
+         "context": [""]
+        },
+        {"tag": "incubation_period",
+         "patterns": ["How long is the incubation period for COVID-19?", "How long does COVID-19 takes to show symptoms", "COVID-19 incubation", "How long for symptoms of COVID-19 to appear", "Tell me about COVID-19 incubation period"],
+         "responses": ["The “incubation period” means the time between catching the virus and beginning to have symptoms of the disease.", "Most estimates of the incubation period for COVID-19 range from 1-14 days, most commonly around five days. These estimates will be updated as more data become available."],
+         "context": [""]
+        },
+        {"tag": "surfaces",
+         "patterns": ["How long does COVID-19 survive on surfaces?", "what is the lifespan of COVID-19 on surfaces", "how long does COVID-19 last on surfaces", "COVID-19 surface lifespan" ],
+         "responses": ["It is not certain how long the virus that causes COVID-19 survives on surfaces, but it seems to behave like other coronaviruses.", "Studies suggest that coronaviruses (including preliminary information on the COVID-19 virus) may persist on surfaces for a few hours or up to several days. This may vary under different conditions (e.g. type of surface, temperature or humidity of the environment).", "If you think a surface may be infected, clean it with simple disinfectant to kill the virus and protect yourself and others."],
+         "context": [""]
+        },
+	{"tag": "negative",
+         "patterns": ["what should i not do","what shouldn't i do","what cant i do","tell me what i should not do"],
+         "responses": ["Smoking, as COVID-19 targets the lungs, a weakened lung system from smoking would make you susceptible", "Wearing multiple masks, it only creates more waste for the enviroment", "Hosting or attending a large gathering of people"],
+         "context": [""]
+        },
+        {"tag": "query",
+         "patterns": ["How many cases of COVID-19 are there?","Cases of COVID-19","Number of cases","How many are infected by COVID-19","Number of COVID-19 cases"],
+         "responses": ["As of November 14th 2020, there are 54 million people infected by COVID-19", "This chatbot is unable to be trained on live data, please refer to COVID-19 Cases on the app itself."],
+         "context": [""]
+        }
+   ]
+}
