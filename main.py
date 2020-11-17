@@ -152,7 +152,7 @@ def forecastDf(df, country: str, index: int):
 st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
-    page_title="Viral Infection Analysis System",  # String or None. Strings get appended with "• Streamlit".
+    page_title="Coronavirus Infection Analysis System",  # String or None. Strings get appended with "• Streamlit".
     page_icon="coronavirus.ico",
 )
 
@@ -266,7 +266,7 @@ countries = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla
              'Uruguay', 'Uzbekistan', 'Vatican', 'Venezuela', 'Vietnam', 'Zambia',
              'Zimbabwe']
 
-st.title("Viral Infection Analysis System 🦠😷")
+st.title("Coronavirus Infection Analysis System 🦠😷")
 st.sidebar.title("Menu")
 page_select = st.sidebar.radio("Select page to view", ('Overview', 'COVID-19 Cases', 'COVID-19 Forecast', 'COVID-Bot',
                                                        'Health '
@@ -281,9 +281,10 @@ if page_select == 'Overview':
              "**1.2 million** dead from the Coronavirus alone.")
     st.write("\n")
     st.write("## The Idea")
-    st.write("> Introducing the Viral Infection Analysis System or ViralNet for short, it aims to combine web scraping "
-             "as well as data forecasting to visualize pandemics and inform the public with the latest news in an "
-             "convenient and interactive dashboard. \n\n > Feel free to explore the app on the menu to your left.")
+    st.write("> Introducing the Coronavirus Infection Analysis System or the CIA System for short, it aims to combine "
+             "the concepts of Data Science in order to visualize pandemics and inform the public with the latest "
+             "news and facts in an convenient and interactive dashboard. \n\n > Feel free to explore the app on the "
+             "menu to your left.")
     st.write("\n ## Our goal is to: ")
     col1, col2, col3 = st.beta_columns(3)
     col1.write("- Display the latest health news and reports")
