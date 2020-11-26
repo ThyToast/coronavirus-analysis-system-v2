@@ -1,16 +1,15 @@
 import re
-from time import sleep
-
 import altair as alt
 import covid_daily
 import numpy as np
 import pandas as pd
 import streamlit as st
 import tweepy
-from googletrans import Translator
-from statsmodels.tsa.arima_model import ARIMA
-from textblob import TextBlob
 
+from googletrans import Translator
+from statsmodels.tsa.arima.model import ARIMA
+from textblob import TextBlob
+from time import sleep
 from covid_bot import covid_bot
 
 
@@ -115,7 +114,7 @@ def forecastDf(df, country: str, index: int):
     df['Date'] = pd.to_datetime(df['Date'])
 
     model_ar_confirmed = ARIMA(y, order=(2, 0, 0))
-    model_fit_ar_confirmed = model_ar_confirmed.fit(disp=False)
+    model_fit_ar_confirmed = model_ar_confirmed.fit()
     predict_ar_confirmed = model_fit_ar_confirmed.predict(1, (len(y) + index - 1))
 
     ftr = df.append(pd.DataFrame({'Date': pd.date_range(start=df['Date'].iloc[-1], periods=index, freq='d',
