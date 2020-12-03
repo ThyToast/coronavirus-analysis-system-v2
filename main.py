@@ -9,7 +9,6 @@ import tweepy
 from googletrans import Translator
 from statsmodels.tsa.arima.model import ARIMA
 from textblob import TextBlob
-from time import sleep
 from covid_bot import covid_bot
 
 
@@ -48,15 +47,16 @@ def cleanText(text):
 @st.cache(show_spinner=False)
 def getTranslate(text):
     translator = Translator()
-    result = None
-    while result is None:
-        try:
-            result = translator.translate(text).text
-        except Exception as e:
-            print(e)
-            translator = Translator()
-            sleep(0.5)
-            pass
+    result = translator.translate(text).text
+    # result = None
+    # while result is None:
+    #     try:
+    #         result = translator.translate(text).text
+    #     except Exception as e:
+    #         print(e)
+    #         translator = Translator()
+    #         sleep(0.5)
+    #         pass
     return result
 
 
