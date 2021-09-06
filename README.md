@@ -1,6 +1,7 @@
 Coronavirus Analysis System (Final Year Project)
   - Built using Python
   - Non-ML based model prediction for COVID-19 cases world wide
+  - COVID-19 chatbot that responds to related questions
   - Streamlit framework user interface
   - Data sourced from Worldometer
 
