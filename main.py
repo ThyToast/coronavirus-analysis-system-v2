@@ -316,6 +316,11 @@ if page_select == "COVID-19 Forecast":
     forecastDf(df, country_name, index)
 
 if page_select == 'COVID-Bot':
+    if 'is_startup' not in st.session_state:
+        st.session_state["is_startup"] = True
+    else:
+        st.session_state["is_startup"] = False
+
     st.write("> COVID-BOT is a NLP bot trained with basic COVID-19 corpus using CNN architecture, it will answer "
              "basic questions and provide facts about COVID-19")
     user_input = get_text()
