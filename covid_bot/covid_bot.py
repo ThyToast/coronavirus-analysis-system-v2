@@ -24,7 +24,8 @@ class CovidBot:
     vocab = joblib.load('covid_bot/datasets/vocab.pkl')
     df2 = pd.read_csv('covid_bot/datasets/response.csv')
 
-    st.session_state["is_startup"] = True
+    if 'is_startup' not in st.session_state:
+        st.session_state["is_startup"] = True
 
     def get_pred(model, encoded_input):
         pred = np.argmax(model.predict(encoded_input))
