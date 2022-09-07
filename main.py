@@ -9,10 +9,15 @@ import tweepy
 from googletrans import Translator
 from statsmodels.tsa.arima.model import ARIMA
 from textblob import TextBlob
+
+from config import API_KEY, API_SECRET, ACCESS_TOKEN, ACCCESS_SECRET
 from covid_bot import covid_bot
 
 
 # cached function for fast response
+from covid_bot.covid_bot import get_text
+
+
 @st.cache(show_spinner=False)
 def getData():
     with st.spinner(text="Fetching data..."):
@@ -80,16 +85,11 @@ def getAnalysis(score):
 @st.cache(show_spinner=False)
 def getTwitterData(userName: str):
     with st.spinner(text="Fetching data..."):
-        consumerKey = '2GEG6e2BlCA79Iw1BDZTMcfsm'
-        consumerSecret = 'KbqBsUxLWEhyDCWwUQ5rEyCRB2DDq3MtUsLrpi4WRmMqRmaZ7e'
-        accessToken = '1862224740-JBq4GzpKSYVbWnwWvtU2EcxocA9TNYqjF0SWsed'
-        accessSecret = 'UzTpWyApEQ5UpJIXnVeIPWV8sLoPvnKmDOtzfT9hpOMmO'
-
-        authenticate = tweepy.OAuthHandler(consumerKey, consumerSecret)
-        authenticate.set_access_token(accessToken, accessSecret)
+        authenticate = tweepy.OAuth1UserHandler(API_KEY, API_SECRET)
+        authenticate.set_access_token(ACCESS_TOKEN, ACCCESS_SECRET)
         api = tweepy.API(authenticate, wait_on_rate_limit=True)
 
-        posts = tweepy.Cursor(api.search, q="COVID-19 from:" + userName, rpp=100, tweet_mode="extended").items()
+        posts = tweepy.Cursor(api.search_tweets, q="COVID-19 from:" + userName, rpp=100, tweet_mode="extended").items()
 
         # posts = api.user_timeline(screen_name=userName, count=100, lang="en", tweet_mode="extended")
         df_twitter = pd.DataFrame([tweet.full_text for tweet in posts], columns=['Tweets'])
@@ -155,88 +155,6 @@ st.set_page_config(
     page_icon="coronavirus.ico",
 )
 
-dark_theme = st.sidebar.checkbox("Dark theme")
-if dark_theme:
-    # CSS Theme
-    st.markdown(
-        """
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <style>
-    .sidebar .sidebar-content {
-        background-image: linear-gradient(#303039,#303039);
-        color: #303039;
-    }
-    .Widget>label {
-        color: white;
-        background-color: #303039;
-    }
-    .sidebar .sidebar-content h1{
-        color: white;
-    }
-     .reportview-container li{
-        font-size: large;
-    }
-    .reportview-container h3{
-        font-size: large;
-    }
-    .reportview-container dl, .reportview-container ol, .reportview-container p, .reportview-container ul{
-        font-size: large;
-    }
-    .Widget>label{
-        font-size: medium;
-    }
-    [class^="st-b"]  {
-        color: white;
-    }
-    [class^="st-ae st-fh st-fi st-fj st-c5 st-fk st-fa st-fl st-fm"]  {
-        color: white;
-    }
-    [class^="st-ae st-af st-ag st-ah st-fn st-f8 st-fl st-fo st-fp"]  {
-        color: white !important;
-    }
-    .st-bb {
-        background-color: transparent;
-    }
-    .st-cz {
-        fill: white;
-    }
-    .st-dr{
-        fill: white;
-    }
-    .st-ae st-af st-ag st-ah st-fn st-f8 st-fl st-fo st-fp{
-        color: white !important;
-    }
-    .st-fn{
-        color: white !important;
-    }
-    .st-bm
-    {
-        color: white !important;
-    }
-     .st-ck{
-        color: white !important;
-    }
-    .st-co{
-        color: white !important;
-    }
-    .st-bn{
-        color: white;
-    }
-    .btn-outline-secondary{
-        border-color: #e83e8c;
-        color: #e83e8c;
-    }
-    .st-at {
-        background-color: #303039;
-    }
-    .st-df {
-        background-color: #303039;
-    }
-    </style>
-    """,
-        unsafe_allow_html=True,
-    )
-
 countries = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla', 'Antigua and Barbuda', 'Argentina',
              'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados',
              'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bonaire Sint Eustatius and Saba',
@@ -285,7 +203,7 @@ if page_select == 'Overview':
              "news and facts in an convenient and interactive dashboard. \n\n > Feel free to explore the app on the "
              "menu to your left.")
     st.write("\n ## Our goal is to: ")
-    col1, col2, col3 = st.beta_columns(3)
+    col1, col2, col3 = st.columns(3)
     col1.write("- Display the latest health news and reports")
     col1.image('images/system.png', width=150)
     col2.write("- Create a monitoring system for pandemics like COVID-19")
@@ -323,7 +241,7 @@ if page_select == 'Health Advice & Report':
     #         j = j + 1
 
     for i in range(0, sortedDF.shape[0]):
-        st.write('### ** ' + str(j) + ')  **' + sortedDF['Tweets'][i])
+        st.write('####  ' + str(j) + ') ' + sortedDF['Tweets'][i])
         j = j + 1
 
 # when covid 19 cases is selected
@@ -400,14 +318,13 @@ if page_select == "COVID-19 Forecast":
 if page_select == 'COVID-Bot':
     st.write("> COVID-BOT is a NLP bot trained with basic COVID-19 corpus using CNN architecture, it will answer "
              "basic questions and provide facts about COVID-19")
-    user_input = covid_bot.CovidBot.get_text()
+    user_input = get_text()
     response = covid_bot.CovidBot.botResponse(user_input)
     bot = st.text_area("Bot:", value=response, height=200, max_chars=None, key=None)
     # if bot:
     #     button = st.checkbox("Click for voiced chatbot")
     #     if button:
     #         covid_bot.CovidBot.speak(response)
-
 
 # when covid 19 cases is selected (data based on worldometers)
 # if page_select == "COVID-19 Cases":

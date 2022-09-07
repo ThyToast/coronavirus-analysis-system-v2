@@ -1,7 +1,6 @@
 import pickle
 import re
 import string
-from covid_bot import SessionState
 import joblib
 import numpy as np
 import pandas as pd
@@ -13,13 +12,19 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
+def get_text():
+    input_text = st.text_input("Type any COVID-19 questions here: ")
+    df_input = pd.DataFrame([input_text], columns=['questions'])
+    return df_input
+
+
 class CovidBot:
     model = load_model('covid_bot/datasets/model-v1.h5')
     tokenizer_t = joblib.load('covid_bot/datasets/tokenizer_t.pkl')
     vocab = joblib.load('covid_bot/datasets/vocab.pkl')
     df2 = pd.read_csv('covid_bot/datasets/response.csv')
 
-    ss = SessionState.get(is_startup=True)
+    st.session_state["is_startup"] = True
 
     def get_pred(model, encoded_input):
         pred = np.argmax(model.predict(encoded_input))
@@ -81,18 +86,13 @@ class CovidBot:
         response = CovidBot.get_response(CovidBot.df2, pred)
         response = CovidBot.bot_response(response)
 
-        if CovidBot.ss.is_startup:
+        if st.session_state["is_startup"]:
             response = "Hi, I'm happy to have you here \nI hope you're doing well today :)"
-            CovidBot.ss.is_startup = False
+            st.session_state["is_startup"] = False
             return response
 
         else:
             return response
-
-    def get_text():
-        input_text = st.text_input("Type any COVID-19 questions here: ")
-        df_input = pd.DataFrame([input_text], columns=['questions'])
-        return df_input
 
     def speak(user_input):
         engine = pyttsx3.init()
