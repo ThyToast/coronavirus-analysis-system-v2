@@ -26,6 +26,9 @@ class CovidBot:
 
     if 'is_startup' not in st.session_state:
         st.session_state["is_startup"] = True
+    else:
+        st.session_state["is_startup"] = False
+
 
     def get_pred(model, encoded_input):
         pred = np.argmax(model.predict(encoded_input))
