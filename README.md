@@ -11,6 +11,9 @@ https://coronavirus-infection-analysis.herokuapp.com/
 
 
 Recording as of July 2024:
-https://github.com/user-attachments/assets/2997b3c0-6c37-47b8-9aed-f293f4e9da49
+
+https://github.com/user-attachments/assets/f3cbab28-61c6-4414-841a-70506ef2e89a
+
+
 
 Disclaimer: Twitter/X free API does not allow for search anymore
